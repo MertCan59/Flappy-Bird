@@ -2,35 +2,22 @@ using MertCan.FlappyBird.Player;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScoreSystem : MonoBehaviour
 {
     private int score=0;
     [SerializeField] private TextMeshProUGUI text;
-    PlayerController playerController;
-   
 
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        StartCoroutine(scoreCount());
-    }
-    public IEnumerator scoreCount()
-    {
-       while (true)
+        if(collision.gameObject.CompareTag("Score"))
         {
             score++;
-            text.text = "Score: "+score.ToString();
-            yield return new WaitForSeconds(1f);
-            isItDead();
-        }
-    }
-    public void isItDead()
-    {
-        if (playerController.isDead) 
-        {
-            score = 0;
-            text.text= "Score: " + score.ToString();
+            text.text="Score: "+score.ToString();
+            Destroy(collision.gameObject);
         }
     }
 }
+
