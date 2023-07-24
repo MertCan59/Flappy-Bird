@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
         while (!player.isDead)
         {
            Instantiate(pipes, new Vector3(9f,Random.Range(-height, height), 0),Quaternion.identity);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
         
     }

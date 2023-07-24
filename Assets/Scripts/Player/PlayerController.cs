@@ -17,7 +17,11 @@ namespace MertCan.FlappyBird.Player
         }
         public void OnJump(InputValue jumpValue)
         {
-            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);     
+            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+            if(isDead==true)
+            {
+                rigidbody.AddForce(Vector3.zero);
+            }
         }
     }
 }
